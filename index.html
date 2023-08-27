@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container .h_input{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+    }
+    .container input{
+        font-size: 20px;
+        width: 280px;
+        height: 35px;
+        border: 2px solid black;
+        border-radius: 7px;
+    }
+
+    .allbtn {
+        width: 315px;
+        display: grid;
+        column-gap: 60px;
+        row-gap: 20px;
+        grid-template-columns: repeat(4, 20px [col-start]);
+    }
+
+    .btn{
+        margin: 7px;
+        padding: 7px;
+        height: 50px;
+        width: 50px;
+        border: none;
+        border-radius: 11px;
+        color: black;
+        background-color: rgb(55, 49, 239);
+        font-size: 25px;
+        cursor: pointer;
+        /* box-shadow: 2px 2px 12px red; */
+    }
+    .btn:hover{
+        background-color: rgb(0, 0, 163);
+        color: white;
+        /* height: 52px; */
+        /* width: 52px; */
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="h_input">
+            <h1>Enter Number to Calculate</h1>
+            <input type="text" >
+        </div>
+        <div class="allbtn">
+            <button class="btn">C</button>
+            <button class="btn">=</button>
+            <button class="btn">/</button>
+            <button class="btn">*</button>
+            <button class="btn">-</button>
+            <button class="btn">+</button>
+            <button class="btn">9</button>
+            <button class="btn">8</button>
+            <button class="btn">7</button>
+            <button class="btn">6</button>
+            <button class="btn">5</button>
+            <button class="btn">4</button>
+            <button class="btn">3</button>
+            <button class="btn">2</button>
+            <button class="btn">1</button>
+            <button class="btn">0</button>
+            <button class="btn">.</button>
+        </div>
+    </div>
+</body>
+<script>
+    let string = "";
+    let buttons = document.querySelectorAll(".btn");
+    Array.from(buttons).forEach((btn)=>{
+        btn.addEventListener("click",(e)=>{
+            if(e.target.innerHTML == "="){
+                string = eval(string)
+                document.querySelector('input').value = string;
+                // document.querySelector('input').innerHTML.color = "red";
+            }
+            else if(e.target.innerHTML == "C"){
+                string = "";
+                document.querySelector('input').value = string;
+            }
+            else{
+
+                console.log(e.target);
+                string = string + e.target.innerHTML;
+                document.querySelector('input').value = string;
+            }
+        })
+    })
+</script>
+
+</html>
